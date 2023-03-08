@@ -5,8 +5,8 @@ import AboutTeam from './components/aboutComponents/about-team';
 const About = () => {
     return (
         <div>
-            <div class="row">
-                <h1 class="text-center">About Us</h1>
+            <div class="row d-inline-block about-height">
+                <h1 class="col text-center">About Us</h1>
             </div>
             <p></p>
             
