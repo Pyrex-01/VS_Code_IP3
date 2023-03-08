@@ -4,15 +4,16 @@ import AboutTeam from './components/aboutComponents/about-team';
 
 const About = () => {
     return (
+       return (
         <div>
-            <div class="row d-inline-block about-height">
-                <h1 class="col text-center">About Us</h1>
+            <div className="header">
+                <h>About Us</h>
             </div>
             <p></p>
             
-                <AboutMission />
+                <AboutMission/>
             <br></br>
-                <AboutTeam />
+                <AboutTeam/>
         </div>
     )
 }
