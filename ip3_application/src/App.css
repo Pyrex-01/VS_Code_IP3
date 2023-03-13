@@ -220,4 +220,25 @@ h1 {
   height: 200px;
 }
 
+.filter{
+  display: inline-block;
+  background-color: black;
+  color:white;
+  height: auto;
+  width: 100%;
+  margin-top: 68px;
+}
 
+.list{
+  display: flex;
+  text-decoration: none;
+  justify-content: space-evenly;
+  list-style-type: none;
+  height: 30px;
+  padding: 10px;
+}
+
+.filter-link{
+  text-decoration: none;
+  color: white;
+}
