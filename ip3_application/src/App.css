@@ -242,3 +242,13 @@ h1 {
   text-decoration: none;
   color: white;
 }
+
+.map-page{
+  display: inline-block;
+  margin-top: 63px;
+}
+
+.map {
+  width: 100vw;
+  height: 100vh;
+}

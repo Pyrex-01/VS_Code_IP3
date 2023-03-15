@@ -34,7 +34,7 @@ const Home = () => {
       </div>
 
       <div className="Map-section">
-        <div className="map">
+        <div className="map-sample">
           <Link class="map-link" to="/map"><img src={map} className="map-img" alt="map" /></Link>
         </div>
         <div className="map-text-area">

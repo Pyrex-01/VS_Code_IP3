@@ -4,7 +4,7 @@ import logo from "./images/logo.png"
 const Layout = () => {
     return (
         <>
-            <nav class="container-fluid navbar navbar-expand-sm bg-white justify-content-between position-fixed px-5 shadow-sm ">
+            <nav class="container-fluid navbar navbar-expand-sm bg-white justify-content-between px-5 shadow-sm position-fixed">
                 <ul class="navbar-nav">
                     <img src={logo} width="50" height="50" class="position-relative" alt="" />
                     <li class="nav-item">
