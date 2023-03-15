@@ -13,3 +13,17 @@ app.get("/api", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
+
+// database connection
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "BlairMackenzie",
+  password: "Zab153647"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
