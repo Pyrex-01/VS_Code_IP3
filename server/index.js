@@ -20,10 +20,16 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "BlairMackenzie",
-  password: "Zab153647"
+  password: "Zab153647",
+  database: "ip3"
 });
 
-con.connect(function(err) {
+con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
+  var sql = "INSERT INTO users (idUsers, userName, emailAddress, password, userBio) VALUES (1, 'Blair', 'blair@gmail.com', 'password1', \"Hi, I'm Blair\")";
+  con.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("1 record inserted");
+  });
 });
