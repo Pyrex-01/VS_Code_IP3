@@ -27,9 +27,9 @@ var con = mysql.createConnection({
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
-  var sql = "INSERT INTO users (idUsers, userName, emailAddress, password, userBio) VALUES (1, 'Blair', 'blair@gmail.com', 'password1', \"Hi, I'm Blair\")";
+  var sql = "SELECT * FROM posts ORDER BY postDate DESC";
   con.query(sql, function (err, result) {
     if (err) throw err;
-    console.log("1 record inserted");
+    console.log(result);
   });
 });
