@@ -244,7 +244,7 @@ h1 {
 }
 
 .map-page{
-  position: relative;
+  position: fixed;
   display: inline-block;
   z-index: 1;
   margin-top: 63px;
@@ -252,7 +252,7 @@ h1 {
 
 .map {
   width: 100vw;
-  height: 100vh;
+  height: 700px;
 }
 
 .nav-box{

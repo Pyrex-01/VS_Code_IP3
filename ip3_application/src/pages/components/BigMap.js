@@ -6,6 +6,14 @@ const containerStyle = {
     height: '100%',
 };
 
+const defaultOptions = {
+    mapTypeControl: false,
+    scaleControl:false,
+    streetViewControl: false,
+    rotateControl: false,
+    scrollwheel: false,
+}
+
 const BigMap = ({center}) => {
 
     return (
@@ -14,6 +22,7 @@ const BigMap = ({center}) => {
                     mapContainerStyle={containerStyle}
                     center={center}
                     zoom={9}
+                    options={defaultOptions}
                 >
                 </GoogleMap>
             </div>
