@@ -252,7 +252,7 @@ h1 {
 
 .map {
   width: 100vw;
-  height: 700px;
+  height: calc(100vh - 63px);
 }
 
 .nav-box{
