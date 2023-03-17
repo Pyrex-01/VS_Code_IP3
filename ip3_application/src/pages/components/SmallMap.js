@@ -2,8 +2,8 @@ import React from 'react';
 import { GoogleMap } from '@react-google-maps/api';
 
 const containerStyle = {
-    width: '100%',
-    height: '100%',
+    width: '900px',
+    height: '500px',
 };
 
 const defaultOptions = {
@@ -11,14 +11,14 @@ const defaultOptions = {
     streetViewControl: false,
 }
 
-const BigMap = ({center}) => {
+const SmallMap = ({center}) => {
 
     return (
             <div className='map'>
                 <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={center}
-                    zoom={8}
+                    zoom={3}
                     options={defaultOptions}
                 >
                 </GoogleMap>
@@ -26,4 +26,4 @@ const BigMap = ({center}) => {
     ) 
  }
 
-export default BigMap;
+export default SmallMap;

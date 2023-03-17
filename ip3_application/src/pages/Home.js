@@ -1,9 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import arrows from "./images/arrows.png"
-import map from "./images/map.png"
+import { useJsApiLoader } from "@react-google-maps/api";
+import SmallMap from './components/SmallMap';
+
+const MAP_API_KEY = process.env.REACT_APP_MAP_API_KEY;
+
+const defaultCenter = {
+  lat: 51.5072,
+  lng: -0.1276
+};
+
 
 const Home = () => {
+
+  
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: MAP_API_KEY
+})
+
   return (
     <div className="screen">
 
@@ -35,7 +51,7 @@ const Home = () => {
 
       <div className="Map-section">
         <div className="map-sample">
-          <Link class="map-link" to="/map"><img src={map} className="map-img" alt="map" /></Link>
+          <Link class="map-link" to="/map">{isLoaded? <SmallMap center={defaultCenter}/> : <h1>Loading...</h1>}</Link>
         </div>
         <div className="map-text-area">
           <h1 className="map-text">Follow and View information about planes on our LIVE map!</h1>
