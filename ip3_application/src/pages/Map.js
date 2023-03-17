@@ -1,41 +1,27 @@
 import React from 'react';
-import { GoogleMap } from '@react-google-maps/api';
+import { useJsApiLoader } from "@react-google-maps/api";
+import BigMap from './components/BigMap';
 
-const containerStyle = {
-    width: '100%',
-    height: '100%'
+const MAP_API_KEY = process.env.REACT_APP_MAP_API_KEY;
+
+const defaultCenter = {
+  lat: 51.5072,
+  lng: -0.1276
 };
 
 
+const Map = () => {
 
-
-const Map = ({ center }) => {
-
-    const mapRef = React.useRef(undefined)
-
-    const onLoad = React.useCallback(function callback(map) {
-        mapRef.current = undefined;
-    }, [])
-
-    const onUnmount = React.useCallback(function callback(map) {
-        mapRef.current = undefined;
-    }, [])
-
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: MAP_API_KEY
+    })
 
     return (
         <div className='map-page'>
-            <div className='map'>
-                <GoogleMap
-                    mapContainerStyle={containerStyle}
-                    center={center}
-                    zoom={9}
-                    onLoad={onLoad}
-                    onUnmount={onUnmount}
-                >
-                </GoogleMap>
-            </div>
+            {isLoaded? <BigMap center={defaultCenter}/> : <h1>Loading...</h1>}
         </div>
-    )
+    ) 
 }
 
 export default Map;

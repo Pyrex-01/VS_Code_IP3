@@ -244,11 +244,19 @@ h1 {
 }
 
 .map-page{
+  position: relative;
   display: inline-block;
+  z-index: 1;
   margin-top: 63px;
 }
 
 .map {
   width: 100vw;
   height: 100vh;
+}
+
+.nav-box{
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
 }
