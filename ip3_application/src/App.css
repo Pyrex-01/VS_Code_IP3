@@ -179,6 +179,21 @@
 .h_about{
   font-size: 250%;
 }
+.about-height{
+  height:auto;
+  margin-top: 70px;
+}
+
+                 
+.text {
+
+  font-size: 100%;
+}
+
+.border{
+  width: 1250px;
+  height: 200px;
+}
 
 .info-box{
   display: flex;
@@ -201,36 +216,6 @@
   padding: 20px;
   text-align: center;
   color: white;
-}
-
-.about-height{
-  height:auto;
-  margin-top: 70px;
-}
-
-
-
-.header{
-  background-color: black;
-  color: white;
-  text-align: center;
-  font-size: 200%;
-  padding: 0.5%;
-
-}
-                   
-.hdr{
-  font-size: 250%;
-}
-
-.text {
-
-  font-size: 100%;
-}
-
-.border{
-  width: 1250px;
-  height: 200px;
 }
 
 .filter{
