@@ -27,7 +27,7 @@ function About() {
             <br></br>
             <p>{!data ? "Loading..." : data}</p>
 
-            <div className="Footer_1">
+            <div className="Footer">
         <p className="foot ">This project was created by students of Glasgow Caledonian University</p>
         <p>2023</p>
         </div>
