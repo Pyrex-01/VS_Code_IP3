@@ -162,9 +162,22 @@
   justify-content: center;
 }
 
-h1 {
-  font-size: 50px;
-  font-weight: bold;
+.header{
+  display: inline-block;
+  background-color: black;
+  height: auto;
+  width: 100%;
+  margin-top: 68px;
+  padding: 5px;
+}
+
+.about{
+  color:white;
+  text-align: center;
+}
+
+.h_about{
+  font-size: 250%;
 }
 
 .info-box{
