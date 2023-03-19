@@ -8,7 +8,7 @@ const AboutTeam = () => {
         
       </div>
       <div class="col-sm-6 mt-4">
-        <h className="hdr">Our Team</h>
+        <h className="h_about">Our Team</h>
         <div class="border border border-dark ">
           <p className='text'>Some Information About Our Team.</p>
         </div>
