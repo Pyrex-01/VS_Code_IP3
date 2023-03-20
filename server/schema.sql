@@ -18,7 +18,7 @@ CREATE TABLE `posts` (
   `idPosts` int NOT NULL,
   `postTitle` varchar(60) NOT NULL,
   `postDate` datetime NOT NULL,
-  `postBody` varchar(2000) NOT NULL,
+  `postBody` mediumtext NOT NULL,
   `postCategory` enum('Planes','Destinations','Environment') NOT NULL,
   `postLikes` int NOT NULL,
   `idUser` int NOT NULL,
