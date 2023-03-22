@@ -5,7 +5,7 @@ const Blogs = () => {
         <div>
             <div className='filter'>
                 <ul className='list'>
-                    <li className='list-item'><a className='filter-link'>Planes</a></li>
+                    <li className='list-item'><a className='filter-link'>News</a></li>
                     <li className='list-item'><a className='filter-link'>Destinations</a></li>
                     <li className='list-item'><a className='filter-link'>Environment</a></li>
                 </ul>
