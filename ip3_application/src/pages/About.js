@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios'
 import AboutMission from './components/aboutComponents/about-mission';
 import AboutTeam from './components/aboutComponents/about-team';
 
-function About() {
-    const [data, setData] = React.useState(null);
+const About = props => {
 
-    React.useEffect(() => {
-        fetch("/api")
-            .then((res) => res.json())
-            .then((data) => setData(data.message));
-    }, []);
+    useEffect(() => {
+        axios.get('/api/hello')
+          .then(res => setState(res.data))
+      }, [])
+  
+      const [state, setState] = useState('')
 
     return (
         <div className="screen">
@@ -25,7 +26,7 @@ function About() {
             <br></br>
             <AboutTeam />
             <br></br>
-            <p>{!data ? "Loading..." : data}</p>
+            <p>{state}</p>
 
             <div className="Footer">
         <p className="foot ">This project was created by students of Glasgow Caledonian University</p>
@@ -33,6 +34,6 @@ function About() {
         </div>
         </div>
     )
-}
+};
 
 export default About;
