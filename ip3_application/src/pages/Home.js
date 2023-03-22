@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import arrows from "./images/arrows.png"
+import arrows from "./images/arrows.png";
 import { useJsApiLoader } from "@react-google-maps/api";
 import SmallMap from './components/SmallMap';
 
