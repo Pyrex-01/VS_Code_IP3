@@ -36,11 +36,11 @@ var con = mysql.createConnection({
 });
 
 con.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected!");
-  var sql = "SELECT * FROM posts ORDER BY postDate DESC";
-  con.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log(result);
+	if (err) throw err;
+	console.log("Connected!");
+	var sql = "SELECT * FROM posts ORDER BY postDate DESC";
+	con.query(sql, function (err, result) {
+	  if (err) throw err;
+	  console.log(result);
+	});
   });
-});

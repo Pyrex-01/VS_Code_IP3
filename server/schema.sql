@@ -5,30 +5,21 @@
 --This is so that whenever we sync from the github we don't have to change the account name and password for the database everytime
 --In the instance create a new schema called ip3 and create the following tables using the code provided:
 
-CREATE TABLE `users` (
-  `idUsers` int NOT NULL,
-  `userName` varchar(45) NOT NULL,
-  `emailAddress` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `userBio` mediumtext,
-  PRIMARY KEY (`idUsers`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE `posts` (
-  `idPosts` int NOT NULL,
+  `idPosts` int NOT NULL AUTO_INCREMENT,
   `postTitle` varchar(60) NOT NULL,
   `postDate` datetime NOT NULL,
   `postBody` mediumtext NOT NULL,
-  `postCategory` enum('Planes','Destinations','Environment') NOT NULL,
-  `postLikes` int NOT NULL,
+  `postCategory` enum('News','Destinations','Environment') NOT NULL,
+  `postLikes` int NOT NULL DEFAULT '0',
   `idUser` int NOT NULL,
   PRIMARY KEY (`idPosts`),
   KEY `idUser_idx` (`idUser`),
   CONSTRAINT `idUser` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUsers`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `comments` (
-  `idcomments` int NOT NULL,
+  `idcomments` int NOT NULL AUTO_INCREMENT,
   `idUser` int NOT NULL,
   `idPost` int NOT NULL,
   `commentText` mediumtext NOT NULL,
@@ -38,3 +29,12 @@ CREATE TABLE `comments` (
   CONSTRAINT `idPost_FK` FOREIGN KEY (`idPost`) REFERENCES `posts` (`idPosts`),
   CONSTRAINT `idUser_FK` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUsers`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `users` (
+  `idUsers` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(45) NOT NULL,
+  `emailAddress` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `userBio` mediumtext,
+  PRIMARY KEY (`idUsers`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
