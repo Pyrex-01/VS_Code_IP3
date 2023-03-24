@@ -1,0 +1,115 @@
+.filter {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    height: auto;
+    width: 100%;
+    margin-top: 68px;
+}
+
+.list {
+    display: flex;
+    text-decoration: none;
+    justify-content: space-evenly;
+    list-style-type: none;
+    height: 30px;
+    padding: 10px;
+}
+
+.filter-link {
+    text-decoration: none;
+    color: white;
+}
+
+.banner2 {
+    display: inline-block;
+    background-image: url(./images/sky.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 250px;
+    width: 100%;
+    padding: 50px 100px;
+}
+
+.Big-title {
+    display: inline-block;
+    margin: 20px 100px;
+}
+
+.top-news {
+    font-weight: bold;
+}
+
+.news {
+    display: flex;
+    flex-direction: column;
+    margin: 100px 100px 0 100px;
+}
+
+.main-news {
+    display: flex;
+}
+
+.info-news {
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.news-text {
+    font-size: 1.5em;
+    padding-top: 20px;
+}
+
+.hr-1 {
+    border: 1px solid black;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.all-news {
+    display: flex;
+    justify-content: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.secondary-news {
+    display: flex;
+    margin: 50px 0;
+    height: 200px;
+}
+
+.info-news-small {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 50px;
+}
+
+.title-small {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.hr-2 {
+    border: 1px solid black;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.sn-img {
+    width: 200px;
+    max-height: 200px;
+}
