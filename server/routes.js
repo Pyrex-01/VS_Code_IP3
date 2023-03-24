@@ -92,7 +92,6 @@ router.delete('/api/delete/post', (req, res, next) => {
 	})
   })
 
-
   router.put('/api/put/likes', (req, res, next) => {
 	const uid = [req.body.uid]
 	const post_id = String(req.body.post_id)
