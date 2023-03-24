@@ -1,5 +1,6 @@
 import React from 'react';
 import { GoogleMap } from '@react-google-maps/api';
+import mapStyle from "./mapStyle";
 
 const containerStyle = {
     width: '900px',
@@ -9,12 +10,13 @@ const containerStyle = {
 const defaultOptions = {
     mapTypeControl: false,
     streetViewControl: false,
+    styles: mapStyle
 }
 
 const SmallMap = ({center}) => {
 
     return (
-            <div className='map'>
+            <div className='small-map'>
                 <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={center}

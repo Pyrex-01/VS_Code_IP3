@@ -9,7 +9,7 @@ const Layout = () => {
                     <ul class="navbar-nav">
                         <img src={logo} width="50" height="50" class="position-relative" alt="" />
                         <li class="nav-item">
-                            <Link class="nav-link fs-4 ms-3" to="/">Explore</Link>
+                            <Link class="nav-link fs-4 ms-3" to="/home">Explore</Link>
                         </li>
                     </ul>
                     <ul class="navbar-nav ">
