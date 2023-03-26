@@ -4,6 +4,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var axios = require('axios');
+
+const params = {access_key: '8af9e33892c7fa1e9325b0dc9fe8e569'}
 
 var indexRouter = require('./routes')
 
@@ -44,3 +47,12 @@ con.connect(function (err) {
 	  console.log(result);
 	});
   });
+
+  axios.get('http://api.aviationstack.com/v1/flights?access_key=8af9e33892c7fa1e9325b0dc9fe8e569')
+.then(response => {
+  const apiResponse = [];
+  apiResponse[0] = response.data;
+  console.log(response.data);
+}).catch(error => {
+console.log(error);
+});
