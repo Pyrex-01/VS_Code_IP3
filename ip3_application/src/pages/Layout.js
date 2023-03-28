@@ -22,7 +22,7 @@ const Layout = () => {
                             <Link class="nav-link" to="/map">Map</Link>
                         </li>
                         <li class="nav-item me-3">
-                            <Link class="nav-link" to="/blogs">Blog</Link>
+                            <Link class="nav-link" to="/blog">Blog</Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/about">About Us</Link>
