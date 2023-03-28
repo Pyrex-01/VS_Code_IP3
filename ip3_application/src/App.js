@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Map from "./pages/Map";
-import BlogMainPage from "./pages/BlogMainPage";
+import MainPage from "./pages/BlogMainPage";
+import CreatePost from "./pages/CreatePost";
 import Post from "./pages/post";
 import About from "./pages/About";
 import NoPage from "./pages/NoPage";
@@ -18,8 +19,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index path="home" element={<Home />} />
           <Route path="map" element={<Map />} />
-          <Route path="blog" element={<BlogMainPage />} />
-          <Route path="createPost" element={<BlogMainPage />} />
+          <Route path="blog" element={<MainPage />} />
+          <Route path="createPost" element={<CreatePost />} />
           <Route path="post" element={<Post />} />
           <Route path="about" element={<About />} />
           <Route path="*" element={<NoPage />} />
