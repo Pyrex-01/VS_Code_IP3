@@ -1,6 +1,12 @@
 var express = require('express')
 var app = express.Router();
 
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+  });
+
 // database connection
 var mysql = require('mysql');
 
@@ -32,6 +38,7 @@ app.get("/api/get", (req, res) => {
 			console.log(err)
 		}
 		res.send(result)
+		console.log(result);
 	});
 });
 
@@ -81,7 +88,7 @@ app.delete('/api/delete/:id', (req, res) => {
 app.post('/api/like/:id', (req, res) => {
 
 	const id = req.params.id;
-	con.query("UPDATE posts SET likes = likes + 1 WHERE id = ?", id, (err, result) => {
+	con.query("UPDATE posts SET postLikes = postLikes + 1 WHERE idPosts = ?", id, (err, result) => {
 		if (err) {
 			console.log(err)
 		}
