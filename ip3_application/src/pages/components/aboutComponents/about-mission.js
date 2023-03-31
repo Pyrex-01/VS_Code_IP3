@@ -11,7 +11,7 @@ const AboutMission = () => {
                     <p className='text'>The concept development is a web application that enables users from around the world to track planes that are shown on a real-time map. </p>
                     <p  className='text'> Our Mission is to offer the users the ability to view information like plane details, weather, the estimation of planes' CO2 emissions, 
                                           and suggested new locations that aviation enthusiasts can explore. </p>
-                    <p  className='text'> Moreover, the users can even comment on the blog page and exchange their experiences with others. </p>
+                    <p  className='text'> Finally, the users can comment on the blog page and exchange their experiences with others. </p>
                 </div>
             </div>
         </div>
