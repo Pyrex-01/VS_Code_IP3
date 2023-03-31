@@ -192,9 +192,15 @@
   text-align: center;
 }
 
-.h_about{
-  font-size: 200%;
+.h_about {
+font-size: 50px;
 }
+
+.title-1{
+  font-size: 50px;
+  font-family:Goudy Old Style;
+}
+
 .about-height{
   height:auto;
   margin-top: 70px;
