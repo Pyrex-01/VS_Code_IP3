@@ -34,7 +34,7 @@ function MainPage() {
           postList.map((val, key) => {
             return (
               <div className="Post" >
-                <h1 className="post-title" onClick={() => (navigate(`/post/${val.idPosts}`))}>{val.title}</h1>
+                <h1 className="post-title" onClick={() => (navigate(`/post/${val.idPosts}`))}>{val.postTitle}</h1>
                 <p>{val.postBody.length > 300 ? val.post_text.substring(0, 300) + " ..." : val.postBody}</p>
                 <h4>{val.user_name}</h4>
                 <button className="like_btn" onClick={(() => LikePost(val.idPosts))}>Like</button>

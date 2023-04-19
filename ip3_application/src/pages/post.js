@@ -7,23 +7,22 @@ export default function Post() {
 
 let {postId} = useParams();
 const [post,setPost] = useState({})
-const [title,setTitle] = useState("");
 
 useEffect(()=>{
-Axios.get(`http://localhost:3002/api/getFromId/${postId}`).then((data)=>{
+Axios.get(`http://localhost:3001/api/getFromId/${postId}`).then((data)=>{
     console.log(data)
 setPost({
-        title: data.data[0].title,
-         postText: data.data[0].post_text,
-         userName: data.data[0].user_name,
-         id:data.data[0].id
+        title: data.data[0].postTitle,
+         postText: data.data[0].postBody,
+         userName: data.data[0].idUser,
+         id:data.data[0].idPosts
         });
  });
 
 },[postId]);
 
 const deletePost = (id) => {
-    Axios.delete(`http://localhost:3002/api/delete/${postId}`).then((response)=>{
+    Axios.delete(`http://localhost:3001/api/delete/${postId}`).then((response)=>{
         alert("you deleted a post")
     })
 }
