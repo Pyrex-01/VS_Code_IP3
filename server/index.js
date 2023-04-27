@@ -33,7 +33,7 @@ var headers = new Headers();
 
 headers.append('Authorisation', 'Basic ' + base64.encode(username + ':' + password));
 
-const fullPlaneData2 = [];
+var fullPlaneData2 = [];
 
 /*
   method getAPIData(), makes api call and stores data as json
@@ -58,40 +58,53 @@ async function getAPIData2() {
   var unixTime = Math.floor(Date.now()/1000);
   console.log(unixTime, unixTime-10);
   
-  var api = api_URL5 + "begin=" + (unixTime-3600).toString() + "&end=" + unixTime.toString();
-  console.log(api);
+  var api = api_URL5 + "begin=" + (unixTime-1200).toString() + "&end=" + unixTime.toString();
 
   const response = await fetch(api);
   const data = await response.json();
-
   console.log(data);
 
   data.map((data) => {
-    generatePlaneData2(data.icao24, data.lastSeen);
+    var depHorDis = data.estDepartureAirportHorizDistance;
+    var depVerDis = data.estDepartureAirportVertDistance;
+    var arrHorDis = data.estArrivalAirportHorizDistace;
+    var arrVerDis = data.estArrivalAirportVertDistance;
+
+    var distance = calcDistance(depHorDis, depVerDis, arrHorDis, arrVerDis);
+    try {
+      generatePlaneData2(data.icao24);
+    } catch (err) {
+      console.log(err);
+    }
   })
   console.log(fullPlaneData2);
 }
 
-async function generatePlaneData2(icao24, lastSeen) {
+async function generatePlaneData2(icao24) {
   var icao = icao24;
-  var time = lastSeen;
 
-  var api2 = api_URL3 + "time=" + time.toString() + "&icao24=" + icao;
+  var api2 = api_URL3 + "icao24=" + icao;
+
   const response = await fetch(api2);
   const data2 = await response.json();
 
-    var icao = data2[0];
-    var callsign = data2[1];
-    var origin_country = data2[2];
-    var longitude = data2[5];
-    var latitude = data2[6];
-    var altitude = data2[13];
-    var onGround = data2[8];
-    var velocity = data2[9];
-    var vertical_rate = data2[11];
-    var time = data2[3];
+  var planeData;
 
-    var planeData = {
+  if(data2.states == null) {
+    console.log("No Plane Data");
+  } else {
+    var icao = data2.states[0][0];
+    var callsign = data2.states[0][1];
+    var origin_country = data2.states[0][2];
+    var longitude = data2.states[0][5];
+    var latitude = data2.states[0][6];
+    var altitude = data2.states[0][13];
+    var onGround = data2.states[0][8];
+    var velocity = data2.states[0][9];
+    var vertical_rate = data2.states[0][11];
+    var time = data2.states[0][3];
+
+    planeData = {
       'icao': icao,
       'Callsign': callsign,
       'Origin_Country': origin_country,
@@ -102,15 +115,15 @@ async function generatePlaneData2(icao24, lastSeen) {
       'Velocity': velocity,
       'Vertical_Rate': vertical_rate,
       'Time': time
-      //'distance travveled': calcDistance(icao, data[3])
     }
-    //calcDistance(icao, data[3]);
     console.log(planeData);
-    fullPlaneData2.push(planeData);
+  } 
+  fullPlaneData2.push(planeData);   
 }
 
-async function calcDistance(icao, time) {
-  
+async function calcDistance(depHorDis, depVerDis, arrHorDis, arrVerDis) {
+  var distance = depHorDis + depVerDis + arrHorDis + arrVerDis;
+  return(distance);
 }
 
 //getApiData2() is for opensky
