@@ -5,11 +5,6 @@ import AboutTeam from './components/aboutComponents/about-team';
 
 const About = props => {
 
-    useEffect(() => {
-        axios.get('/api/hello')
-            .then(res => setState(res.data))
-    }, [])
-
     const [state, setState] = useState('')
 
     return (

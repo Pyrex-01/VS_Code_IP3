@@ -21,7 +21,7 @@ function App() {
           <Route path="map" element={<Map />} />
           <Route path="blog" element={<MainPage />} />
           <Route path="createPost" element={<CreatePost />} />
-          <Route path="post" element={<Post />} />
+          <Route path="post/:postId" element={<Post />}/>
           <Route path="about" element={<About />} />
           <Route path="*" element={<NoPage />} />
         </Route>

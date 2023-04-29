@@ -24,6 +24,9 @@ const Layout = () => {
                         <li class="nav-item me-3">
                             <Link class="nav-link" to="/blog">Blog</Link>
                         </li>
+                        <li class="nav-item me-3">
+                            <Link class="nav-link" to="/createPost">Create Post</Link>
+                        </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/about">About Us</Link>
                         </li>

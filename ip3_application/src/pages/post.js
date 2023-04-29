@@ -30,10 +30,13 @@ const deletePost = (id) => {
 
     return (
         <div className="Post individual">
-        <h1 className="post-title">{post.title}</h1>
-          <p>{post.postText}</p>
-          <h4>{post.userName}</h4>
-          <button onClick={(() => deletePost(post.id))}>X</button>
+
+            <br />
+            <br />
+            <br />
+            <h1 className="post-title">{post.title}</h1>
+            <p>{post.postText}</p>
+            <button onClick={(() => deletePost(post.id))}>Delete Post</button>
           
       </div>
     )

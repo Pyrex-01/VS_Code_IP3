@@ -1,4 +1,6 @@
-import { React } from 'react';
+import React,{useState,useEffect} from 'react';
+import Axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 import { GoogleMap, MarkerF } from '@react-google-maps/api';
 import mapStyle from "./mapStyle";
 
@@ -17,16 +19,23 @@ const defaultOptions = {
 
 const BigMap = ({ center }) => {
 
-    const markers = [
-        {
-            id: 1,
-            position: { lat: 51.4072, lng: -0.1276 },
-        },
-        {
-            id: 2,
-            position: { lat: 52.5072, lng: -0.2276 },
-        }
-    ]
+    const [flightsList, setFlightsList] = useState([]);
+    let navigate = useNavigate();
+
+    
+    useEffect(() => {
+        Axios.get("http://localhost:3001/api/getMapData").then((data) => {
+            console.log(data)
+            setFlightsList(data.data)
+        });
+    }, [])
+    
+
+    const markers = [flightsList]
+
+    const position = {lat: flightsList.Latitude, lng: flightsList.Longitude}
+
+    console.log(flightsList)
 
     return (
         <div className='map'>
@@ -34,17 +43,17 @@ const BigMap = ({ center }) => {
                 mapContainerStyle={containerStyle}
                 center={center}
                 zoom={8}
-                options={defaultOptions}
-            >
-                {markers.map(({ id, position }) => (
-                <MarkerF key={id} position={position} icon= {{url:'/plane.png',
-                                                                scaledSize: new window.google.maps.Size(50,40)}} />
-                ))}
+                options={defaultOptions}>
+
+                {markers.length > 0 &&
+                    markers.map((val, key) => {
+                        console.log(val)
+                        var position = { lat: val.Latitude, lng: val.Longitude }
+                        return (<MarkerF key={val.ID} position={position} icon= {{url:'/plane.png', scaledSize: new window.google.maps.Size(50,40)}} />)
+                })}
             </GoogleMap>
         </div>
     )
 }
-
-
 
 export default BigMap;
