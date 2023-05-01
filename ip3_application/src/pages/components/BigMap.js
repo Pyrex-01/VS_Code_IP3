@@ -29,12 +29,6 @@ const BigMap = ({ center }) => {
         });
     }, [])
 
-    const SendMarker = (icao) => {
-        console.log(icao)
-        Axios.post(`http://localhost:3001/api/postMarker`, {icao: icao})
-        
-      }
-
     console.log(flightsList)
 
     return (
@@ -49,7 +43,7 @@ const BigMap = ({ center }) => {
                     flightsList.map((val, key) => {
                         var position = { lat: val.Latitude, lng: val.Longitude }
                         return (<MarkerF key={val.icao} position={position} icon={{url:'/plane.png', scaledSize: new window.google.maps.Size(50,40)}} 
-                        onClick={(() => SendMarker(val.icao))} />)
+                        onClick={() => (navigate(`/map/${val.icao}`))} />)
                 })}
             </GoogleMap>
         </div>

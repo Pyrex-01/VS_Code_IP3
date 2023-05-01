@@ -14,31 +14,52 @@ const defaultCenter = {
 
 const Map = () => {
 
+    const [co2List, setCO2List] = useState([]);
     const [flightsList, setFlightsList] = useState([]);
-    let {mapId} = useParams();
-    const val = [];
+    let {icao} = useParams();
+    console.log(icao)
+    var currentFlight = {}
+    var currentFlightCO2 = {}
 
-    /*
     useEffect(() => {
         Axios.get("http://localhost:3001/api/getMapData").then((data) => {
-            console.log(data)
             setFlightsList(data.data)
         });
+        /*
+        Axios.get("http://localhost:3001/api/getCO2").then((data) => {
+            console.log(data)
+            setCO2List(data.data)
+        })
+        */
     }, [])
+
+    /*
+    function getCO2data() {
+        Axios.get("http://localhost:3001/api/getCO2").then((data) => {
+            console.log(data)
+            setCO2List(data.data)
+        })
+    }
     */
+
+    flightsList.map((val, key) => {
+        if (val.icao == icao) {
+            currentFlight = val
+        }
+    })
+
+    co2List.map((val, key) => {
+        if (val.icao == icao) {
+            currentFlightCO2 = val
+        } 
+    })
+
+    console.log(currentFlightCO2)
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: MAP_API_KEY
     })
-
-/*
-    for (let i = 0; i < flightsList.length; i++) {
-        if (flightsList[i].ID == mapId){
-            val = flightsList[i]
-        }
-    }
-    */
 
     return (
         <div>
@@ -48,9 +69,9 @@ const Map = () => {
             <div className='flight-info'>
                 <div className='d-flex flex-column justify-content-evenly w-100 h-25 bg-black ps-4'>
                     <div>
-                        <div id='flight-number' className='fs-4 fw-bold text-white'>{val.Callsign}</div>
+                        <div id='flight-number' className='fs-4 fw-bold text-white'>{currentFlight.Callsign}</div>
                     </div>
-                    <div id='destination' className='fs-2 fw-bold text-white'>{val.Origin_Country}</div>
+                    <div id='destination' className='fs-2 fw-bold text-white'>{currentFlight.Origin_Country}</div>
                 </div>
                 <div className=''>
                     <div className='fs-4 fw-bold text-black m-2'>Flight info</div>
@@ -61,26 +82,26 @@ const Map = () => {
                             </tr>
                             <tr>
                                 <th>ICAO:</th>
-                                <td> {val.icao}</td>
+                                <td> {icao}</td>
                             </tr>
                             <br></br>
                             <tr>
                                 <th>Latitude</th>
-                                <td colspan="3"> {val.Latitude}</td>
+                                <td colspan="3"> {currentFlight.Latitude}</td>
                             </tr>
                             <tr>
                                 <th>Longitude</th>
-                                <td> {val.Longitude}</td>
+                                <td> {currentFlight.Longitude}</td>
                             </tr>
                             <br></br>
                             <tr>
                                 <th>Altitude</th>
-                                <td> {val.Altitude}</td>
+                                <td> {currentFlight.Altitude}</td>
                             </tr>
                             <br></br>
                             <tr>
                                 <th>Speed</th>
-                                <td> {val.Velocity} m/s</td>
+                                <td> {currentFlight.Velocity} m/s</td>
                             </tr>
                             <br></br>
                         </table>
@@ -88,8 +109,8 @@ const Map = () => {
 
                     <div className='fs-4 fw-bold text-black m-2'>Pollution</div>
                     <div className='pollution'>
-                        <div className='fs-1 fw-bold ps-3 pe-3'>{val.C02_Emissions}</div>
-                        <div className=''>kg of co2 per flight</div>
+                        <div className='fs-1 fw-bold ps-3 pe-3'>{parseFloat(2 * ((currentFlight.Velocity / 100)*3.13)).toFixed(2)}</div>
+                        <div className=''>kg of co2 per second</div>
                     </div>
                 </div>
             </div>
