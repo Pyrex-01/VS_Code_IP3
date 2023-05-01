@@ -4,7 +4,6 @@ import {useNavigate} from 'react-router-dom'
 import { GoogleMap, MarkerF } from '@react-google-maps/api';
 import mapStyle from "./mapStyle";
 
-
 const containerStyle = {
     width: '100%',
     height: '100%',
@@ -29,11 +28,12 @@ const BigMap = ({ center }) => {
             setFlightsList(data.data)
         });
     }, [])
-    
 
-    const markers = [flightsList]
-
-    const position = {lat: flightsList.Latitude, lng: flightsList.Longitude}
+    const SendMarker = (icao) => {
+        console.log(icao)
+        Axios.post(`http://localhost:3001/api/postMarker`, {icao: icao})
+        
+      }
 
     console.log(flightsList)
 
@@ -45,11 +45,11 @@ const BigMap = ({ center }) => {
                 zoom={8}
                 options={defaultOptions}>
 
-                {markers.length > 0 &&
-                    markers.map((val, key) => {
-                        console.log(val)
+                {flightsList.length > 0 &&
+                    flightsList.map((val, key) => {
                         var position = { lat: val.Latitude, lng: val.Longitude }
-                        return (<MarkerF key={val.ID} position={position} icon= {{url:'/plane.png', scaledSize: new window.google.maps.Size(50,40)}} />)
+                        return (<MarkerF key={val.icao} position={position} icon={{url:'/plane.png', scaledSize: new window.google.maps.Size(50,40)}} 
+                        onClick={(() => SendMarker(val.icao))} />)
                 })}
             </GoogleMap>
         </div>

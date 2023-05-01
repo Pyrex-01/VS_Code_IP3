@@ -1,7 +1,11 @@
 var express = require('express')
 var app = express.Router();
 
-var fullPlaneData2 = [];
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "http://localhost:3000"); 
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
 
 var id = 0;
 
@@ -19,11 +23,13 @@ const api_URL = 'http://api.aviationstack.com/v1/flights?access_key=8af9e33892c7
 
 const api_URL2 = 'https://opensky-network.org/api/states/all?icao24=';
 
-const api_URL3 = 'https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226';
+const api_URL3 = 'https://opensky-network.org/api/states/all?';
 
 const api_URL4 = 'https://opensky-network.org/api/flights/aircraft?';
 
 var api_URL5 = 'https://opensky-network.org/api/flights/all?';
+
+var api_URL6 = 'https://opensky-network.org/api/states/all?lamin=47.9382&lomin=-14.2086&lamax=61.1271&lomax=1.3919&on_ground=false';
 
 function getId() {
 	var newID = id + 1;
@@ -32,13 +38,14 @@ function getId() {
 }
 
 async function getAPIData2() {
-	const response = await fetch(api_URL3);
+	const response = await fetch(api_URL6);
 	const data = await response.json();
-	console.log(data);
-	generatePlaneData2(data);
+	return generatePlaneData2(data);
+	
 }
 
 const generatePlaneData2 = (data) => {
+	var result = []
 	data.states.map((data) => {
 		var icao = data[0];
 		var callsign = data[1];
@@ -62,18 +69,13 @@ const generatePlaneData2 = (data) => {
 			'Vertical_Rate': vertical_rate,
 			'ID': getId()
 		}
-		fullPlaneData2.push(planeData);
+		if (onGround == false){
+			result.push(planeData);
+		}
 	})
-	console.log(fullPlaneData2);
-
-	getAPIData2();
+	return result
 }
 
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "http://localhost:3000"); 
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-  });
 
 // database connection
 var mysql = require('mysql');
@@ -165,23 +167,25 @@ app.post('/api/like/:id', (req, res) => {
 });
 
 app.get('/api/getMapData', (req, res) => {
-
-	var planeData = {
-		'icao': 1234,
-		'Callsign': 1234,
-		'Origin_Country': "Russia",
-		'Longitude': 1.0276,
-		'Latitude': 51.4072,
-		'Altitude': 1234,
-		'Landed': "Nope",
-		'Velocity': 1234,
-		'Vertical_Rate': 1234,
-		'ID': 1234
-	}
-
-	res.send(planeData);
+	id = 0
+	var fullPlaneData = []
+	getAPIData2().then(x => { 
+		fullPlaneData = x; 
+		//console.log(fullPlaneData)
+		res.send(fullPlaneData);
+	});
 })
 
+app.post('/api/postMarker', (req, res) => {
+	const icao = req.params.icao
+	console.log(icao)
+	/*
+	var fullPlaneData = []
+	getAPIData2().then(x => { 
+		fullPlaneData = x; 
+	});
+	*/
+})
 	
 /*
 	async function getAPIData2() {

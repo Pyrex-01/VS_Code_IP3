@@ -9,7 +9,7 @@ const [title,setTitle] = useState("");
 const [text,setText] = useState("");
 
 const submitPost = () => {
-Axios.post('http://localhost:3002/api/create', {userName: userName, title: title, text:text})
+Axios.post('http://localhost:3001/api/create', {userName: userName, title: title, text:text})
 }
 
     return (
