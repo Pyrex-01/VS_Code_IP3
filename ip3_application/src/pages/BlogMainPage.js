@@ -25,10 +25,6 @@ function MainPage() {
   return (
     <div>
       <div className="MainPage">
-        <br />
-        <br />
-        <br />
-        <h1>Blog Page</h1>
         <div className="PostContainer">
           {postList.length > 0 &&
           postList.map((val, key) => {

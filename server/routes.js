@@ -152,9 +152,8 @@ app.post('/api/create', (req, res) => {
 	const username = req.body.userName;
 	const title = req.body.title;
 	const text = req.body.text;
-	const category = req.body.text;
 
-	con.query("INSERT INTO posts (postTitle, postDate, postBody, postCategory, idUser) VALUES (?,NOW(),?,?,?)", [title, text, category, username], (err, result) => {
+	con.query("INSERT INTO posts (postTitle, postDate, postBody, username) VALUES (?,NOW(),?,?)", [title, text, username], (err, result) => {
 		if (err) {
 			console.log(err)
 		}
@@ -164,7 +163,7 @@ app.post('/api/create', (req, res) => {
 
 // Route to delete a post
 
-app.delete('/api/delete/:id', (req, res) => {
+app.post('/api/delete/:id', (req, res) => {
 	const id = req.params.id;
 
 	console.log(id)
